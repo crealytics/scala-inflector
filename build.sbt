@@ -1,3 +1,5 @@
+enablePlugins(ScalaJSPlugin)
+
 import scala.xml._
 
 name := "scala-inflector"
