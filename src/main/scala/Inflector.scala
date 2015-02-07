@@ -1,6 +1,5 @@
 package mojolly.inflector
 
-import java.util.Locale.ENGLISH
 import scala.Some
 import annotation.tailrec
 import scala.util.matching.Regex
@@ -8,15 +7,15 @@ import scala.util.matching.Regex
 trait Inflector {
 
   def titleize(word: String): String =
-    """\b([a-z])""".r.replaceAllIn(humanize(underscore(word)), _.group(0).toUpperCase(ENGLISH))
+    """\b([a-z])""".r.replaceAllIn(humanize(underscore(word)), _.group(0).toUpperCase())
   def humanize(word: String): String = capitalize(word.replace("_", " "))
   def camelize(word: String): String = {
     val w = pascalize(word)
-    w.substring(0, 1).toLowerCase(ENGLISH) + w.substring(1)
+    w.substring(0, 1).toLowerCase() + w.substring(1)
   }
   def pascalize(word: String): String = {
     val lst = word.split("_").toList
-    (lst.headOption.map(s ⇒ s.substring(0, 1).toUpperCase(ENGLISH) + s.substring(1)).get ::
+    (lst.headOption.map(s ⇒ s.substring(0, 1).toUpperCase() + s.substring(1)).get ::
       lst.tail.map(s ⇒ s.substring(0, 1).toUpperCase + s.substring(1))).mkString("")
   }
   def underscore(word: String): String = {
@@ -31,9 +30,9 @@ trait Inflector {
   }
 
   def capitalize(word: String): String =
-    word.substring(0, 1).toUpperCase(ENGLISH) + word.substring(1).toLowerCase(ENGLISH)
+    word.substring(0, 1).toUpperCase() + word.substring(1).toLowerCase()
   def uncapitalize(word: String): String =
-    word.substring(0, 1).toLowerCase(ENGLISH) + word.substring(1)
+    word.substring(0, 1).toLowerCase() + word.substring(1)
   def ordinalize(word: String): String = ordanize(word.toInt, word)
   def ordinalize(number: Int): String = ordanize(number, number.toString)
   private def ordanize(number: Int, numberString: String) = {
@@ -73,7 +72,7 @@ trait Inflector {
 
   @tailrec
   private def applyRules(collection: List[Rule], word: String): String = {
-    if (uncountables.contains(word.toLowerCase(ENGLISH))) word
+    if (uncountables.contains(word.toLowerCase())) word
     else {
       if (collection.isEmpty) return word
       val m = collection.head(word)
