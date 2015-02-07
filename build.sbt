@@ -6,14 +6,14 @@ version := "1.3.5"
 
 organization := "io.backchat.inflector"
 
-scalaVersion := "2.10.0"
+scalaVersion := "2.11.5"
 
 crossVersion := CrossVersion.binary
 
 scalacOptions ++= Seq("-optimize", "-unchecked", "-deprecation", "-Xcheckinit", "-encoding", "utf8")
 
 libraryDependencies <+= (scalaVersion) {
-  case v if v.startsWith("2.1") => "org.specs2" %% "specs2" % "2.3.11" % "test"
+  case v if v.startsWith("2.1") => "org.specs2" %% "specs2" % "2.4.16" % "test"
   case "2.9.2" | "2.9.3" => "org.specs2" %% "specs2" % "1.12.4.1" % "test"
   case "2.9.1" | "2.9.1-1" => "org.specs2" %% "specs2" % "1.12.4" % "test"
   case "2.9.0-1" => "org.specs2" %% "specs2" % "1.8.2" % "test"
@@ -23,12 +23,12 @@ libraryDependencies <+= (scalaVersion) {
 
 libraryDependencies ++= Seq(
   // compilerPlugin("org.scala-tools.sxr" % "sxr_2.9.0" % "0.2.7"),
-  "junit" % "junit" % "4.10" % "test"
+  "junit" % "junit" % "4.12" % "test"
 )
 
 autoCompilerPlugins := true
 
-crossScalaVersions := Seq("2.8.0", "2.8.1", "2.8.2", "2.9.0", "2.9.0-1", "2.9.1", "2.9.1-1", "2.9.2", "2.9.3", "2.10.0", "2.11.0")
+crossScalaVersions := Seq("2.8.0", "2.8.1", "2.8.2", "2.9.0", "2.9.0-1", "2.9.1", "2.9.1-1", "2.9.2", "2.9.3", "2.10.0", "2.11.5")
 
 parallelExecution in Test := false
 
