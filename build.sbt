@@ -85,7 +85,8 @@ publishArtifact in Test := false
 
 pomIncludeRepository := { x => false }
 
-resolvers += "Sonatype snapshots" at "https://oss.sonatype.org/content/repositories/snapshots"
+resolvers ++= Seq("Sonatype snapshots" at "https://oss.sonatype.org/content/repositories/snapshots",
+                  "Scalaz Bintray Repo"  at "http://dl.bintray.com/scalaz/releases")
 
 testOptions := Seq(
         Tests.Argument("console", "junitxml"))
